@@ -2,4 +2,4 @@
 
 Ejercicio donde se usa Flexbox, transiciones, scroll, ...
 
-![resultado](resultado.jpg)
+![resultado](resultado.png)
