@@ -1,0 +1,156 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
+}
+@font-face {
+    font-family: opensans;
+    src: url(../fuentes/opensans.ttf);
+}
+@font-face {
+    font-family: socialicons;
+    src: url(../fuentes/Icons\ Social\ Media\ 7.ttf);
+}
+body {
+    font-family: opensans, sans-serif;
+    background: linear-gradient(to bottom, #bbf1bb, rgb(82,160,3));
+}
+header h1 {
+    font-size: 5em;
+    background-color: aliceblue;
+    text-decoration: underline rgb(82,160,3);
+    color: rgb(16, 101, 4);
+}
+header img {
+    vertical-align: middle; /* Para alinear la imagen verticalmente con el texto*/
+}
+header:hover span:nth-of-type(odd) { /* span impares */
+    transform: translateY(20px); /* Lo movemos 20px hacia abajo */
+    transition: transform .4s;
+    /* span es de tipo en línea con lo que no se puede mover. Por eso lo convertimos
+    a inline-block*/
+    display: inline-block;
+}
+header:hover span:nth-of-type(even) { /* span pares */
+    transform: translateY(-20px); /* Lo movemos 20px hacia arriba */
+    transition: transform .4s;
+    display: inline-block;
+}
+#pisos h2, #chalets h2 {
+    font-size: 1.5em;
+    color: darkgreen;
+    border-bottom: 3px solid darkgreen;
+    margin-bottom: 0.7em;
+    margin-top: 0.7em;
+}
+.ofertas {
+    display: flex;
+    /* Como las imágenes de los chalets y pisos se salen de la pantalla, vamos
+    a usar esta propiedad para poder desplazarnos por las imágenes de los pisos
+    y chalets de forma independiente y que el resto de la página no se mueva */
+    overflow: scroll;
+    column-gap: 10px;
+}
+.oferta img:first-of-type { /* âra que no afecte a la imagen de la estrella */
+    width: 300px;
+}
+.destacado {
+    /* Queremos colocar la imagen de la estrella arriba a la derecha de la foto */
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 32px;
+    /* Para que esto funcione, su padre, en este caso .oferta, debe tener un 
+    posicionamiento diferente a static (valor por defecto). Lo más fácil
+    es darle a ese padre position: relative */
+}
+.oferta {
+    position: relative;
+    box-shadow: 2px 2px 4px grey;
+    margin-bottom: 30px; /* Para que no quede pegado a la barra de desplazamiento */
+}
+.oferta:hover .destacado {
+    transform: rotate(360deg) scale(1.5);
+    transition: transform 1s;
+} 
+#pisos .oferta {
+    background-color: rgb(245, 221, 188);
+}
+#pisos .precio {
+    background-color: rgb(236, 231, 201);
+}
+#chalets .oferta {
+    background-color: rgb(237, 226, 171);
+}
+#chalets .precio {
+    background-color: rgb(230, 213, 133);
+}
+.vendido {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    /* Al poner 50% quiere decir que lo coloque a partir de la mitad, no centrado.
+    Un truco es luego transladarlo un 50% hacia atrás.
+    Primero hacer el translate y luego el rotate */
+    transform: translate(-50%, -50%) rotate(-45deg);
+    color: white;
+    font-weight: bold;
+    font-size: 3em;
+    -webkit-text-stroke: black 2px; /* Contorno del texto */
+    text-decoration: line-through;
+    text-decoration-thickness: 3px;
+    text-decoration-color: red;
+}
+.vendido ~ .precio :last-of-type { 
+    text-decoration: line-through;
+    text-decoration-color: red;
+    text-decoration-thickness: 2px;
+}
+
+.precio {
+    /* Para poner el texto Precio a la izquierda y el importe a la derecha */
+    display: flex;
+    justify-content: space-between;
+}
+.precio div:last-of-type { /* El importe es el último div de .precio */
+    font-weight: bold;
+}
+.detalles {
+    /* Para poner el nº de habitaciones a la izquierda, el de baños en el centro
+    y los metros cuadrados a la derecha */
+    display: flex;
+    justify-content: space-between;
+}
+.habitaciones, .baños, .metrosCuadrados {
+    background-repeat: no-repeat;
+    background-size: contain; /* Para que se ajuste a su contenedor */
+    padding-left: 32px;
+}
+.habitaciones {
+    background-image: url("../imagenes/iconos/habitaciones.png");
+}
+.baños {
+    background-image: url("../imagenes/iconos/baños.png");
+}
+.metrosCuadrados {
+    background-image: url("../imagenes/iconos/metros.png");
+}
+.direccion, .precio, .detalles {
+    padding: 0.2em;
+}
+footer {
+     /* para poner el (c) a la izquierda y los enlaces a la derecha */
+    display: flex;
+    justify-content: space-between;
+    background-color: black;
+    color: white;
+    padding: 10px;
+}
+footer a {
+    font-family: socialicons;
+    filter: grayscale();
+    padding: 10px;
+}
+
+
+
